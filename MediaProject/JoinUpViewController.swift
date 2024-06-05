@@ -99,7 +99,7 @@ class JoinUpViewController: UIViewController {
         }
         
         emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(60)
+            make.top.equalTo(titleLabel.snp.bottom).offset(100)
             make.centerX.equalToSuperview()
             make.width.equalTo(view.snp.width).multipliedBy(0.8)
             make.height.equalTo(35)

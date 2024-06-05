@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImageView {
     func configureImageView(imageName: String) {
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 6
         self.image = UIImage(named: imageName)
         self.contentMode = .scaleAspectFill
         self.layer.masksToBounds = true

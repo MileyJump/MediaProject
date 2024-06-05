@@ -86,24 +86,46 @@ class ViewController: UIViewController {
         return imageView
     }()
     
-    let top10: UIImageView = {
+    let top10ImageView: UIImageView = {
         let imageView = UIImageView()
-        
+        imageView.image = UIImage(named: "top10 badge")
         return imageView
     }()
     
     let newEpisodeLabel: UILabel = {
         let label = UILabel()
         label.text = "새로운 에피소드"
+        label.font = .boldSystemFont(ofSize: 12)
+        label.backgroundColor = .red
+        label.textColor = .white
+        label.textAlignment = .center
+        label.layer.cornerRadius = 4
+        label.layer.masksToBounds = true
         return label
     }()
     
-    let WatchNow: UILabel = {
+    let WatchNowLabel: UILabel = {
+        let label = UILabel()
+        label.text = "지금 시청하기"
+        label.font = .boldSystemFont(ofSize: 12)
+        label.backgroundColor = .white
+        label.textAlignment = .center
+        label.layer.cornerRadius = 4
+        label.layer.masksToBounds = true
+        return label
+    }()
+    
+    let newSeriesLabel: UILabel = {
         let label = UILabel()
         label.text = "새로운 시리즈"
+        label.font = .boldSystemFont(ofSize: 12)
+        label.backgroundColor = .red
+        label.textAlignment = .center
+        label.textColor = .white
+        label.layer.cornerRadius = 4
+        label.layer.masksToBounds = true
         return label
     }()
-    
     
     
     override func viewDidLoad() {
@@ -142,6 +164,11 @@ class ViewController: UIViewController {
         view.addSubview(firstContentImageView)
         view.addSubview(secondContentImageView)
         view.addSubview(thirdContentImageView)
+        view.addSubview(top10ImageView)
+        view.addSubview(newEpisodeLabel)
+        view.addSubview(WatchNowLabel)
+        view.addSubview(newSeriesLabel)
+        
     }
     
     func configureLayout() {
@@ -202,6 +229,29 @@ class ViewController: UIViewController {
             make.leading.equalTo(secondContentImageView.snp.trailing).offset(6)
         }
         
+        top10ImageView.snp.makeConstraints { make in
+            make.top.trailing.equalTo(secondContentImageView)
+            make.width.equalTo(20)
+            make.height.equalTo(25)
+        }
+        
+        WatchNowLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(secondContentImageView.snp.bottom)
+            make.horizontalEdges.equalTo(secondContentImageView).inset(10)
+            make.height.equalTo(22)
+        }
+        
+        newEpisodeLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(WatchNowLabel.snp.top)
+            make.horizontalEdges.equalTo(WatchNowLabel)
+            make.height.equalTo(WatchNowLabel)
+        }
+        
+        newSeriesLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(thirdContentImageView.snp.bottom)
+            make.horizontalEdges.equalTo(thirdContentImageView).inset(10)
+            make.height.equalTo(22)
+        }
         
         
     }

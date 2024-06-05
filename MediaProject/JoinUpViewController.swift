@@ -14,7 +14,7 @@ class JoinUpViewController: UIViewController {
         let label = UILabel()
         label.text = "JACKFLIX"
         label.textColor = .red
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = .boldSystemFont(ofSize: 35)
         return label
     }()
     
@@ -23,14 +23,19 @@ class JoinUpViewController: UIViewController {
         textField.placeholder = "이메일 주소 또는 전화번호"
         textField.layer.cornerRadius = 8
         textField.backgroundColor = .lightGray
+        textField.textAlignment = .center
+        textField.font = .systemFont(ofSize: 14)
+        textField.textColor = .white
         return textField
     }()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configureUI(title: "")
-//        configureLayout()
         view.backgroundColor = .black
+        configureHierarchy()
+        configureLayout()
         
     }
     
@@ -45,5 +50,11 @@ class JoinUpViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(60)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(view.snp.width).multipliedBy(0.8)
+            make.height.equalTo(35)
+        }
     }
 }

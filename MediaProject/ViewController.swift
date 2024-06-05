@@ -34,7 +34,6 @@ class ViewController: UIViewController {
     
     let mainImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemBlue
         imageView.configureImageView(imageName: "명량")
         return imageView
     }()
@@ -47,7 +46,7 @@ class ViewController: UIViewController {
         return imageView
     }()
     
-    let playBtn: UIButton = {
+    let playButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 8
         button.backgroundColor = .white
@@ -62,7 +61,7 @@ class ViewController: UIViewController {
         return imageView
     }()
     
-    let likeBtn: UIButton = {
+    let myLikeButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 8
         button.backgroundColor = .darkGray
@@ -76,28 +75,25 @@ class ViewController: UIViewController {
     let nowHotLabel: UILabel = {
         let label = UILabel()
         label.text = "지금 뜨는 콘텐츠"
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .white
         return label
     }()
     
     let firstContentImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemPink
         imageView.configureImageView(imageName: "부산행")
         return imageView
     }()
     
     let secondContentImageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.backgroundColor = .systemYellow
         imageView.configureImageView(imageName: "도둑들")
         return imageView
     }()
     
     let thirdContentImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemGreen
         imageView.configureImageView(imageName: "극한직업")
         return imageView
     }()
@@ -126,9 +122,9 @@ class ViewController: UIViewController {
     private func setupHierarchy() {
         view.addSubview(backgroundImageView)
         view.addSubview(mainImageView)
-        view.addSubview(playBtn)
+        view.addSubview(playButton)
         view.addSubview(playImageView)
-        view.addSubview(likeBtn)
+        view.addSubview(myLikeButton)
         view.addSubview(nowHotLabel)
         view.addSubview(firstContentImageView)
         view.addSubview(secondContentImageView)
@@ -147,7 +143,7 @@ class ViewController: UIViewController {
             make.bottom.equalTo(mainImageView.snp.bottom).offset(4)
         }
         
-        playBtn.snp.makeConstraints { make in
+        playButton.snp.makeConstraints { make in
             make.leading.equalTo(mainImageView).offset(12)
             make.bottom.equalTo(mainImageView).inset(12)
             make.width.equalTo(mainImageView.snp.width).multipliedBy(0.45)
@@ -155,13 +151,13 @@ class ViewController: UIViewController {
         }
         
         playImageView.snp.makeConstraints { make in
-            make.edges.equalTo(playBtn).inset(8)
+            make.edges.equalTo(playButton).inset(8)
         }
         
-        likeBtn.snp.makeConstraints { make in
+        myLikeButton.snp.makeConstraints { make in
             make.trailing.equalTo(mainImageView).offset(-12)
             make.bottom.equalTo(mainImageView).inset(12)
-            make.size.equalTo(playBtn)
+            make.size.equalTo(playButton)
         }
         
         nowHotLabel.snp.makeConstraints { make in

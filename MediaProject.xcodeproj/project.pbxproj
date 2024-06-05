@@ -45,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B03A1A2D2C10421F006CFB9C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */,
+				B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		B053C3AC2C0F4A8F009A98E4 = {
 			isa = PBXGroup;
 			children = (
@@ -68,8 +77,7 @@
 				B053C3BA2C0F4A8F009A98E4 /* SceneDelegate.swift */,
 				B053C3BC2C0F4A8F009A98E4 /* ViewController.swift */,
 				B053C3CC2C0F4B45009A98E4 /* JoinUpViewController.swift */,
-				B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */,
-				B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */,
+				B03A1A2D2C10421F006CFB9C /* Extension */,
 				B053C3BE2C0F4A8F009A98E4 /* Main.storyboard */,
 				B053C3C12C0F4A90009A98E4 /* Assets.xcassets */,
 				B053C3C32C0F4A90009A98E4 /* LaunchScreen.storyboard */,

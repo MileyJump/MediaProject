@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */; };
+		B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A992C16E119006CFB9C /* TrendViewController.swift */; };
+		B03A1A9C2C16E8BB006CFB9C /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */; };
+		B03A1A9E2C16E91D006CFB9C /* ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A9D2C16E91D006CFB9C /* ReuseIdentifier.swift */; };
 		B053C3B92C0F4A8F009A98E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053C3B82C0F4A8F009A98E4 /* AppDelegate.swift */; };
 		B053C3BB2C0F4A8F009A98E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053C3BA2C0F4A8F009A98E4 /* SceneDelegate.swift */; };
 		B053C3BD2C0F4A8F009A98E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053C3BC2C0F4A8F009A98E4 /* ViewController.swift */; };
@@ -21,6 +24,9 @@
 
 /* Begin PBXFileReference section */
 		B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		B03A1A992C16E119006CFB9C /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
+		B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
+		B03A1A9D2C16E91D006CFB9C /* ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifier.swift; sourceTree = "<group>"; };
 		B053C3B52C0F4A8F009A98E4 /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B053C3B82C0F4A8F009A98E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B053C3BA2C0F4A8F009A98E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,9 +55,28 @@
 			isa = PBXGroup;
 			children = (
 				B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */,
+				B03A1A9D2C16E91D006CFB9C /* ReuseIdentifier.swift */,
 				B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		B03A1A972C16DC56006CFB9C /* JACKFLIX */ = {
+			isa = PBXGroup;
+			children = (
+				B053C3BC2C0F4A8F009A98E4 /* ViewController.swift */,
+				B053C3CC2C0F4B45009A98E4 /* JoinUpViewController.swift */,
+			);
+			path = JACKFLIX;
+			sourceTree = "<group>";
+		};
+		B03A1A982C16DD49006CFB9C /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				B03A1A992C16E119006CFB9C /* TrendViewController.swift */,
+				B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */,
+			);
+			path = Trend;
 			sourceTree = "<group>";
 		};
 		B053C3AC2C0F4A8F009A98E4 = {
@@ -75,8 +100,8 @@
 			children = (
 				B053C3B82C0F4A8F009A98E4 /* AppDelegate.swift */,
 				B053C3BA2C0F4A8F009A98E4 /* SceneDelegate.swift */,
-				B053C3BC2C0F4A8F009A98E4 /* ViewController.swift */,
-				B053C3CC2C0F4B45009A98E4 /* JoinUpViewController.swift */,
+				B03A1A982C16DD49006CFB9C /* Trend */,
+				B03A1A972C16DC56006CFB9C /* JACKFLIX */,
 				B03A1A2D2C10421F006CFB9C /* Extension */,
 				B053C3BE2C0F4A8F009A98E4 /* Main.storyboard */,
 				B053C3C12C0F4A90009A98E4 /* Assets.xcassets */,
@@ -166,8 +191,11 @@
 				B0F8A4632C0FD94B00639E84 /* UIImageView+Extension.swift in Sources */,
 				B053C3BD2C0F4A8F009A98E4 /* ViewController.swift in Sources */,
 				B053C3B92C0F4A8F009A98E4 /* AppDelegate.swift in Sources */,
+				B03A1A9C2C16E8BB006CFB9C /* TrendTableViewCell.swift in Sources */,
 				B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */,
+				B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */,
 				B053C3CD2C0F4B45009A98E4 /* JoinUpViewController.swift in Sources */,
+				B03A1A9E2C16E91D006CFB9C /* ReuseIdentifier.swift in Sources */,
 				B053C3BB2C0F4A8F009A98E4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

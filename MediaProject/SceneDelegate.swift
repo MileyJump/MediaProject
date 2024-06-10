@@ -18,18 +18,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
 
-               // 첫 번째 뷰 컨트롤러 생성
-               let firstViewController = ViewController()
-//               let secondViewController = JoinUpViewController()
-
-               // 네비게이션 컨트롤러 설정
-               let rootVC = UINavigationController(rootViewController: firstViewController)
-//               let navigationController = UINavigationController(rootViewController: secondViewController)
                
+        let firstVC = ViewController()
+        let joinVC = JoinUpViewController()
+        let trendVC = TrendViewController()
 
-               // 윈도우의 루트 뷰 컨트롤러를 네비게이션 컨트롤러로 설정
-               window?.rootViewController = rootVC
-               window?.makeKeyAndVisible()
+
+        // 네비게이션 컨트롤러 설정
+        let firstvc = UINavigationController(rootViewController: firstVC)
+        let joinvc = UINavigationController(rootViewController: joinVC)
+        let trendvc = UINavigationController(rootViewController: trendVC)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers([firstvc,trendvc], animated: true)
+        
+        if let items = tabBarController.tabBar.items {
+            items[0].image = UIImage(systemName: "popcorn")
+            items[0].selectedImage = UIImage(systemName: "popcorn.fill")
+            items[0].title = "뮤비"
+            
+            items[1].image = UIImage(systemName: "chart.bar")
+            items[1].selectedImage = UIImage(systemName: "chart.bar.fill")
+            items[1].title = "트렌드"
+            
+        }
+               
+        // 윈도우의 루트 뷰 컨트롤러를 네비게이션 컨트롤러로 설정
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+
+             
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

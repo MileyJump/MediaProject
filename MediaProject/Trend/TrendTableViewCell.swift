@@ -39,6 +39,27 @@ class TrendTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    let gradeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "평점"
+        label.textAlignment = .center
+        label.backgroundColor = .purple
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
+    
+    let scoreLabel: UILabel = {
+        let label = UILabel()
+        label.text = "3.3"
+        label.textAlignment = .center
+        label.backgroundColor = .white
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 12)
+        return label
+    }()
+    
     let titleLabel : UILabel = {
         let label = UILabel()
         label.text = "Alice in Borderland"
@@ -56,20 +77,21 @@ class TrendTableViewCell: UITableViewCell {
     
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .darkGray
         return view
     }()
     
     let learnMoreLabel: UILabel = {
         let label = UILabel()
         label.text = "자세히 보기"
-        label.backgroundColor = .blue
+        label.font = .systemFont(ofSize: 14)
         return label
     }()
     
     let arrowImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.right")
+        imageView.tintColor = .darkGray
         return imageView
     }()
     
@@ -88,6 +110,8 @@ class TrendTableViewCell: UITableViewCell {
         contentView.addSubview(hashtag)
         contentView.addSubview(trendView)
         contentView.addSubview(trendImageView)
+        contentView.addSubview(gradeLabel)
+        contentView.addSubview(scoreLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(lineView)
@@ -109,7 +133,7 @@ class TrendTableViewCell: UITableViewCell {
         
         trendView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(dateLabel)
-            make.height.equalTo(trendView.snp.width).multipliedBy(0.8)
+            make.height.equalTo(trendView.snp.width).multipliedBy(0.9)
             make.top.equalTo(hashtag.snp.bottom).offset(4)
             make.bottom.equalToSuperview().inset(25)
         }
@@ -117,6 +141,19 @@ class TrendTableViewCell: UITableViewCell {
         trendImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(trendView)
             make.height.equalTo(trendView.snp.height).multipliedBy(0.6)
+        }
+        
+        gradeLabel.snp.makeConstraints { make in
+            make.leading.equalTo(trendImageView.snp.leading).inset(14)
+            make.bottom.equalTo(trendImageView.snp.bottom).inset(14)
+            make.width.equalTo(30)
+            make.height.equalTo(25)
+        }
+        
+        scoreLabel.snp.makeConstraints { make in
+            make.leading.equalTo(gradeLabel.snp.trailing)
+            make.size.equalTo(gradeLabel)
+            make.bottom.equalTo(gradeLabel.snp.bottom)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -136,7 +173,7 @@ class TrendTableViewCell: UITableViewCell {
         }
         
         learnMoreLabel.snp.makeConstraints { make in
-            make.top.equalTo(lineView.snp.bottom).offset(14)
+            make.top.equalTo(lineView.snp.bottom).offset(15)
             make.leading.equalTo(titleLabel)
         }
         

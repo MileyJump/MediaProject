@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01BF85F2C1729E100CD30B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B01BF85E2C1729E100CD30B9 /* Alamofire */; };
+		B01BF8632C172FB600CD30B9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B01BF8622C172FB600CD30B9 /* .gitignore */; };
+		B01BF8652C172FCE00CD30B9 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BF8642C172FCE00CD30B9 /* APIURL.swift */; };
+		B01BF8672C17348500CD30B9 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BF8662C17348500CD30B9 /* Trend.swift */; };
 		B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */; };
 		B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A992C16E119006CFB9C /* TrendViewController.swift */; };
 		B03A1A9C2C16E8BB006CFB9C /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */; };
@@ -23,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B01BF8622C172FB600CD30B9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B01BF8642C172FCE00CD30B9 /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
+		B01BF8662C17348500CD30B9 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		B03A1A992C16E119006CFB9C /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
@@ -45,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0F8A4692C0FDAC600639E84 /* SnapKit in Frameworks */,
+				B01BF85F2C1729E100CD30B9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				B03A1A992C16E119006CFB9C /* TrendViewController.swift */,
+				B01BF8662C17348500CD30B9 /* Trend.swift */,
 				B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */,
 			);
 			path = Trend;
@@ -82,6 +91,7 @@
 		B053C3AC2C0F4A8F009A98E4 = {
 			isa = PBXGroup;
 			children = (
+				B01BF8622C172FB600CD30B9 /* .gitignore */,
 				B053C3B72C0F4A8F009A98E4 /* MediaProject */,
 				B053C3B62C0F4A8F009A98E4 /* Products */,
 			);
@@ -107,6 +117,7 @@
 				B053C3C12C0F4A90009A98E4 /* Assets.xcassets */,
 				B053C3C32C0F4A90009A98E4 /* LaunchScreen.storyboard */,
 				B053C3C62C0F4A90009A98E4 /* Info.plist */,
+				B01BF8642C172FCE00CD30B9 /* APIURL.swift */,
 			);
 			path = MediaProject;
 			sourceTree = "<group>";
@@ -129,6 +140,7 @@
 			name = MediaProject;
 			packageProductDependencies = (
 				B0F8A4682C0FDAC600639E84 /* SnapKit */,
+				B01BF85E2C1729E100CD30B9 /* Alamofire */,
 			);
 			productName = MediaProject;
 			productReference = B053C3B52C0F4A8F009A98E4 /* MediaProject.app */;
@@ -160,6 +172,7 @@
 			mainGroup = B053C3AC2C0F4A8F009A98E4;
 			packageReferences = (
 				B0F8A4672C0FDAC600639E84 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B01BF85D2C1729E100CD30B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = B053C3B62C0F4A8F009A98E4 /* Products */;
 			projectDirPath = "";
@@ -175,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01BF8632C172FB600CD30B9 /* .gitignore in Resources */,
 				B053C3C22C0F4A90009A98E4 /* Assets.xcassets in Resources */,
 				B053C3C52C0F4A90009A98E4 /* Base in Resources */,
 				B053C3C02C0F4A8F009A98E4 /* Base in Resources */,
@@ -190,12 +204,14 @@
 			files = (
 				B0F8A4632C0FD94B00639E84 /* UIImageView+Extension.swift in Sources */,
 				B053C3BD2C0F4A8F009A98E4 /* ViewController.swift in Sources */,
+				B01BF8672C17348500CD30B9 /* Trend.swift in Sources */,
 				B053C3B92C0F4A8F009A98E4 /* AppDelegate.swift in Sources */,
 				B03A1A9C2C16E8BB006CFB9C /* TrendTableViewCell.swift in Sources */,
 				B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */,
 				B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */,
 				B053C3CD2C0F4B45009A98E4 /* JoinUpViewController.swift in Sources */,
 				B03A1A9E2C16E91D006CFB9C /* ReuseIdentifier.swift in Sources */,
+				B01BF8652C172FCE00CD30B9 /* APIURL.swift in Sources */,
 				B053C3BB2C0F4A8F009A98E4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +437,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B01BF85D2C1729E100CD30B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 		B0F8A4672C0FDAC600639E84 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -432,6 +456,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B01BF85E2C1729E100CD30B9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B01BF85D2C1729E100CD30B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		B0F8A4682C0FDAC600639E84 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B0F8A4672C0FDAC600639E84 /* XCRemoteSwiftPackageReference "SnapKit" */;

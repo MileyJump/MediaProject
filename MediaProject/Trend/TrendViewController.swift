@@ -11,6 +11,8 @@ import SnapKit
 
 class TrendViewController: UIViewController {
     
+    var trendData: [Results] = []
+    
     let trendTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .blue
@@ -80,40 +82,41 @@ class TrendViewController: UIViewController {
         ]
   
         
-        AF.request(APIURL.trendURL, method: .get, headers: headers)
-            .responseDecodable(of: Trend.self) { response in
-            switch response.result{
+//        AF.request(APIURL.trendURL, method: .get, headers: headers)
+//            .responseDecodable(of: Trend.self) { response in
+//            switch response.result{
+//            case .success(let value):
+//                print(value)
+//                self.trendData = value.results
+//                self.trendTableView.reloadData()
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+    
+        
+        AF.request(APIURL.trendURL, method: .get, headers: headers).responseString { response in
+            switch response.result {
             case .success(let value):
                 print(value)
-
             case .failure(let error):
                 print(error)
             }
         }
-    
-        
-//        AF.request(APIURL.trendURL, method: .get, headers: headers).responseString { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error)
-//            }
-        }
         
         
-//    }
+    }
 }
 
 extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        trendData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier, for: indexPath) as! TrendTableViewCell
-        
+        cell.configureCell(data: trendData[indexPath.row])
         return cell
     }
     

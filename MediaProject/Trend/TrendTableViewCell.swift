@@ -105,6 +105,14 @@ class TrendTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureCell(data: Results) {
+        hashtag.text = "# \(data.media_type)"
+        
+        scoreLabel.text = data.vote_average.formatted()
+        titleLabel.text = data.original_title
+        subTitleLabel.text = data.overview
+    }
+    
     func configureHierarchy() {
         contentView.addSubview(dateLabel)
         contentView.addSubview(hashtag)

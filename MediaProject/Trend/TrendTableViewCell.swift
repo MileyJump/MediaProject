@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 import SnapKit
 
 class TrendTableViewCell: UITableViewCell {
@@ -14,7 +15,6 @@ class TrendTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "12/10/2020"
         label.textColor = .lightGray
-//        label.backgroundColor = .blue
         label.font = .systemFont(ofSize: 14)
         return label
     }()
@@ -28,14 +28,17 @@ class TrendTableViewCell: UITableViewCell {
     
     let trendView: UIView = {
         let view = UIView()
-        view.backgroundColor = .orange
         view.layer.cornerRadius = 6
         return view
     }()
     
     let trendImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .red
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 6
+        imageView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -106,10 +109,12 @@ class TrendTableViewCell: UITableViewCell {
     }
     
     func configureCell(data: Results) {
-        
+        let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.backdrop_path)")
+        trendImageView.kf.setImage(with: url)
+//        trendImageView.image = UIImage(systemName: "star")
         hashtag.text = "# \(data.media_type)"
-        scoreLabel.text = "\(data.vote_average)"
-        titleLabel.text = data.original_title
+        scoreLabel.text = "\(Double(round(data.vote_average)))"
+        titleLabel.text = data.title
         subTitleLabel.text = data.overview
     }
     

@@ -22,15 +22,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let firstVC = ViewController()
         let joinVC = JoinUpViewController()
         let trendVC = TrendViewController()
+        let movie = MovieCollectionViewController()
 
 
         // 네비게이션 컨트롤러 설정
         let firstvc = UINavigationController(rootViewController: firstVC)
         let joinvc = UINavigationController(rootViewController: joinVC)
         let trendvc = UINavigationController(rootViewController: trendVC)
+        let movievc = UINavigationController(rootViewController: movie)
+        
         
         let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([firstvc,trendvc], animated: true)
+        tabBarController.setViewControllers([firstvc,trendvc,movievc], animated: true)
         
         if let items = tabBarController.tabBar.items {
             items[0].image = UIImage(systemName: "popcorn")
@@ -40,6 +43,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             items[1].image = UIImage(systemName: "chart.bar")
             items[1].selectedImage = UIImage(systemName: "chart.bar.fill")
             items[1].title = "트렌드"
+            
+            items[2].image = UIImage(systemName: "chart.bar")
+            items[2].selectedImage = UIImage(systemName: "chart.bar.fill")
+            items[2].title = "뮤비"
             
         }
                

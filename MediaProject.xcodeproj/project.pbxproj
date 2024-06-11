@@ -11,6 +11,10 @@
 		B01BF8632C172FB600CD30B9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B01BF8622C172FB600CD30B9 /* .gitignore */; };
 		B01BF8652C172FCE00CD30B9 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BF8642C172FCE00CD30B9 /* APIURL.swift */; };
 		B01BF8672C17348500CD30B9 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BF8662C17348500CD30B9 /* Trend.swift */; };
+		B02B65C92C17E155002C17B9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B02B65C82C17E155002C17B9 /* Kingfisher */; };
+		B02B65DD2C184C03002C17B9 /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B65DC2C184C03002C17B9 /* MovieCollectionViewController.swift */; };
+		B02B65DF2C184F83002C17B9 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B65DE2C184F83002C17B9 /* MovieModel.swift */; };
+		B02B65E12C185775002C17B9 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02B65E02C185775002C17B9 /* MovieCollectionViewCell.swift */; };
 		B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */; };
 		B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A992C16E119006CFB9C /* TrendViewController.swift */; };
 		B03A1A9C2C16E8BB006CFB9C /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */; };
@@ -30,6 +34,9 @@
 		B01BF8622C172FB600CD30B9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B01BF8642C172FCE00CD30B9 /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
 		B01BF8662C17348500CD30B9 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
+		B02B65DC2C184C03002C17B9 /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
+		B02B65DE2C184F83002C17B9 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		B02B65E02C185775002C17B9 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		B03A1A992C16E119006CFB9C /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02B65C92C17E155002C17B9 /* Kingfisher in Frameworks */,
 				B0F8A4692C0FDAC600639E84 /* SnapKit in Frameworks */,
 				B01BF85F2C1729E100CD30B9 /* Alamofire in Frameworks */,
 			);
@@ -59,6 +67,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B02B65E22C188C9B002C17B9 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				B02B65DE2C184F83002C17B9 /* MovieModel.swift */,
+				B02B65DC2C184C03002C17B9 /* MovieCollectionViewController.swift */,
+				B02B65E02C185775002C17B9 /* MovieCollectionViewCell.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
 		B03A1A2D2C10421F006CFB9C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +128,7 @@
 			children = (
 				B053C3B82C0F4A8F009A98E4 /* AppDelegate.swift */,
 				B053C3BA2C0F4A8F009A98E4 /* SceneDelegate.swift */,
+				B02B65E22C188C9B002C17B9 /* Movie */,
 				B03A1A982C16DD49006CFB9C /* Trend */,
 				B03A1A972C16DC56006CFB9C /* JACKFLIX */,
 				B03A1A2D2C10421F006CFB9C /* Extension */,
@@ -141,6 +160,7 @@
 			packageProductDependencies = (
 				B0F8A4682C0FDAC600639E84 /* SnapKit */,
 				B01BF85E2C1729E100CD30B9 /* Alamofire */,
+				B02B65C82C17E155002C17B9 /* Kingfisher */,
 			);
 			productName = MediaProject;
 			productReference = B053C3B52C0F4A8F009A98E4 /* MediaProject.app */;
@@ -173,6 +193,7 @@
 			packageReferences = (
 				B0F8A4672C0FDAC600639E84 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B01BF85D2C1729E100CD30B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				B02B65C72C17E155002C17B9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = B053C3B62C0F4A8F009A98E4 /* Products */;
 			projectDirPath = "";
@@ -207,10 +228,13 @@
 				B01BF8672C17348500CD30B9 /* Trend.swift in Sources */,
 				B053C3B92C0F4A8F009A98E4 /* AppDelegate.swift in Sources */,
 				B03A1A9C2C16E8BB006CFB9C /* TrendTableViewCell.swift in Sources */,
+				B02B65DD2C184C03002C17B9 /* MovieCollectionViewController.swift in Sources */,
+				B02B65DF2C184F83002C17B9 /* MovieModel.swift in Sources */,
 				B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */,
 				B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */,
 				B053C3CD2C0F4B45009A98E4 /* JoinUpViewController.swift in Sources */,
 				B03A1A9E2C16E91D006CFB9C /* ReuseIdentifier.swift in Sources */,
+				B02B65E12C185775002C17B9 /* MovieCollectionViewCell.swift in Sources */,
 				B01BF8652C172FCE00CD30B9 /* APIURL.swift in Sources */,
 				B053C3BB2C0F4A8F009A98E4 /* SceneDelegate.swift in Sources */,
 			);
@@ -445,6 +469,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		B02B65C72C17E155002C17B9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 		B0F8A4672C0FDAC600639E84 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -460,6 +492,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B01BF85D2C1729E100CD30B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		B02B65C82C17E155002C17B9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B02B65C72C17E155002C17B9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		B0F8A4682C0FDAC600639E84 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

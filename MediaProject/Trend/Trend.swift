@@ -26,6 +26,6 @@ struct Results: Decodable {
     let popularity: Double
     let release_date: String
     let video: Bool
-    let vote_average: Int
+    let vote_average: Double
     let vote_count: Int
 }

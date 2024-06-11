@@ -82,27 +82,27 @@ class TrendViewController: UIViewController {
         ]
   
         
-//        AF.request(APIURL.trendURL, method: .get, headers: headers)
-//            .responseDecodable(of: Trend.self) { response in
-//            switch response.result{
-//            case .success(let value):
-//                print(value)
-//                self.trendData = value.results
-//                self.trendTableView.reloadData()
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-    
-        
-        AF.request(APIURL.trendURL, method: .get, headers: headers).responseString { response in
-            switch response.result {
+        AF.request(APIURL.trendURL, method: .get, headers: headers)
+            .responseDecodable(of: Trend.self) { response in
+            switch response.result{
             case .success(let value):
                 print(value)
+                self.trendData = value.results
+                self.trendTableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
+    
+        
+//        AF.request(APIURL.trendURL, method: .get, headers: headers).responseString { response in
+//            switch response.result {
+//            case .success(let value):
+//                print(value)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
         
         
     }

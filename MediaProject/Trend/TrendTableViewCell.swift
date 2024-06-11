@@ -106,9 +106,9 @@ class TrendTableViewCell: UITableViewCell {
     }
     
     func configureCell(data: Results) {
-        hashtag.text = "# \(data.media_type)"
         
-        scoreLabel.text = data.vote_average.formatted()
+        hashtag.text = "# \(data.media_type)"
+        scoreLabel.text = "\(data.vote_average)"
         titleLabel.text = data.original_title
         subTitleLabel.text = data.overview
     }

@@ -12,6 +12,7 @@ class CreditAPIViewController: UIViewController {
     
     var trendData: Results?
     var movieID: Int?
+    var creditData: [Cast] = []
     
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -68,10 +69,12 @@ class CreditAPIViewController: UIViewController {
         let url = "https://api.themoviedb.org/3/movie/\(movieID)/credits?\(APIKey.movieKey)"
         print(url)
         
-        AF.request(url).responseString { response in
+        AF.request(url).responseDecodable(of: Credit.self) { response in
             switch response.result {
             case .success(let value):
                 print(value)
+                self.creditData = value.cast
+                self.castTableView.reloadData()
             case .failure(let error):
                 print(error)
             }
@@ -163,7 +166,7 @@ extension CreditAPIViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == overViewTableView {
             return 1
         } else {
-            return 10
+            return creditData.count
         }
     }
     
@@ -179,7 +182,8 @@ extension CreditAPIViewController: UITableViewDelegate, UITableViewDataSource {
             return overCell
         } else {
             let caseCell = tableView.dequeueReusableCell(withIdentifier: CastTableViewCell.identifier, for: indexPath) as! CastTableViewCell
-            caseCell.configureCell(data: trendData)
+            caseCell.configureCell(data: creditData[indexPath.row])
+            
             return caseCell
         }
     }

@@ -10,6 +10,7 @@
 		B01106282C199FE500AD9705 /* CreditAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01106272C199FE500AD9705 /* CreditAPIViewController.swift */; };
 		B011062A2C19D23400AD9705 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01106292C19D23400AD9705 /* OverViewTableViewCell.swift */; };
 		B011062C2C19D25900AD9705 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011062B2C19D25900AD9705 /* CastTableViewCell.swift */; };
+		B011062E2C19E58100AD9705 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011062D2C19E58100AD9705 /* Credit.swift */; };
 		B01BF85F2C1729E100CD30B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B01BF85E2C1729E100CD30B9 /* Alamofire */; };
 		B01BF8632C172FB600CD30B9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B01BF8622C172FB600CD30B9 /* .gitignore */; };
 		B01BF8652C172FCE00CD30B9 /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01BF8642C172FCE00CD30B9 /* APIURL.swift */; };
@@ -37,6 +38,7 @@
 		B01106272C199FE500AD9705 /* CreditAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditAPIViewController.swift; sourceTree = "<group>"; };
 		B01106292C19D23400AD9705 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		B011062B2C19D25900AD9705 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
+		B011062D2C19E58100AD9705 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
 		B01BF8622C172FB600CD30B9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B01BF8642C172FCE00CD30B9 /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
 		B01BF8662C17348500CD30B9 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				B03A1A992C16E119006CFB9C /* TrendViewController.swift */,
 				B01BF8662C17348500CD30B9 /* Trend.swift */,
+				B011062D2C19E58100AD9705 /* Credit.swift */,
 				B03A1A9B2C16E8BB006CFB9C /* TrendTableViewCell.swift */,
 				B01106272C199FE500AD9705 /* CreditAPIViewController.swift */,
 				B01106292C19D23400AD9705 /* OverViewTableViewCell.swift */,
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B011062E2C19E58100AD9705 /* Credit.swift in Sources */,
 				B011062A2C19D23400AD9705 /* OverViewTableViewCell.swift in Sources */,
 				B0F8A4632C0FD94B00639E84 /* UIImageView+Extension.swift in Sources */,
 				B053C3BD2C0F4A8F009A98E4 /* ViewController.swift in Sources */,

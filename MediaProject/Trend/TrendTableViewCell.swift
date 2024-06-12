@@ -111,7 +111,6 @@ class TrendTableViewCell: UITableViewCell {
     func configureCell(data: Results) {
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.backdrop_path)")
         trendImageView.kf.setImage(with: url)
-//        trendImageView.image = UIImage(systemName: "star")
         hashtag.text = "# \(data.media_type)"
         scoreLabel.text = "\(Double(round(data.vote_average)))"
         titleLabel.text = data.title

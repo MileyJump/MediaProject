@@ -11,8 +11,6 @@ class CastTableViewCell: UITableViewCell {
     
     let castingImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
-        imageView.layer.cornerRadius = 8
         return imageView
     }()
     
@@ -33,7 +31,6 @@ class CastTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .purple
         configureHierarchy()
         configureLayout()
     }
@@ -42,11 +39,19 @@ class CastTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(data: Results) {
+    func configureCell(data: Cast) {
+        guard let profile_path = data.profile_path else { return }
+        let url = URL(string: "https://image.tmdb.org/t/p/w500/\(profile_path)")
+        castingImageView.kf.setImage(with: url)
+        nameLabel.text = data.name
+        explainLabel.text = data.character
         
-        
-//        let url = URL(string: <#T##String#>)
-        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        castingImageView.layer.cornerRadius = 8
+        castingImageView.clipsToBounds = true
     }
     
     func configureHierarchy() {

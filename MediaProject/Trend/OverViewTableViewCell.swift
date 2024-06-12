@@ -11,9 +11,10 @@ class OverViewTableViewCell: UITableViewCell {
     
     
     
-    let overViewLable: UILabel = {
+    let overViewLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.textAlignment = .left
         return label
     }()
     
@@ -36,25 +37,25 @@ class OverViewTableViewCell: UITableViewCell {
     }
     
     func configureCell(data: Results) {
-        
+        overViewLabel.text = data.overview
     }
     
     func configureHierarchy() {
-        contentView.addSubview(overViewLable)
+        contentView.addSubview(overViewLabel)
         contentView.addSubview(arrowIamgeView)
     }
     
     func configureLayout() {
-        overViewLable.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(4)
-            make.horizontalEdges.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.6)
+        overViewLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(18)
+            make.horizontalEdges.equalToSuperview().inset(15)
+            make.height.equalToSuperview().multipliedBy(0.4)
         }
         arrowIamgeView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(8)
             make.width.equalTo(arrowIamgeView.snp.height)
             make.centerX.equalToSuperview()
-            make.top.equalTo(overViewLable.snp.bottom)
+            make.height.equalTo(25)
         }
     }
 }

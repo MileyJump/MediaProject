@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Alamofire
 
 class CreditAPIViewController: UIViewController {
     
-    var trendData: [Results] = []
+    var trendData: Results?
+    var movieID: Int?
     
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -21,7 +23,7 @@ class CreditAPIViewController: UIViewController {
         let label = UILabel()
         label.text = "Squid Game"
         label.textColor = .white
-        label.font = .boldSystemFont(ofSize: 30)
+        label.font = .boldSystemFont(ofSize: 25)
         return label
     }()
     
@@ -53,11 +55,30 @@ class CreditAPIViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         configureTableView()
+        callRequest()
         
         overViewTableView.backgroundColor = .red
         castTableView.backgroundColor = .brown
+    }
+    
+
+    
+    func callRequest() {
+        guard let movieID = movieID else { return }
+        let url = "https://api.themoviedb.org/3/movie/\(movieID)/credits?\(APIKey.movieKey)"
+        print(url)
+        
+        AF.request(url).responseString { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
         
     }
+    
     
     func configureTableView() {
         overViewTableView.register(OverViewTableViewCell.self, forCellReuseIdentifier: OverViewTableViewCell.identifier)
@@ -74,6 +95,16 @@ class CreditAPIViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.title = "출연/제작"
         navigationController?.navigationBar.tintColor = .black
+        
+        guard let trendData = trendData else { return }
+        
+        let backdropImageURL = URL(string: "https://image.tmdb.org/t/p/w500/\(trendData.backdrop_path))")
+        backgroundImageView.kf.setImage(with: backdropImageURL)
+        let posterIamgeUIRL = URL(string: "https://image.tmdb.org/t/p/w500/\(trendData.poster_path))")
+        posterImageView.kf.setImage(with: posterIamgeUIRL)
+        titleLabel.text = trendData.title
+        
+        
     }
     
     func configureHierarchy() {
@@ -95,6 +126,7 @@ class CreditAPIViewController: UIViewController {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(backgroundImageView.snp.leading).inset(20)
             make.top.equalTo(backgroundImageView.snp.top).inset(20)
+            make.height.equalTo(30)
         }
         posterImageView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
@@ -131,18 +163,23 @@ extension CreditAPIViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == overViewTableView {
             return 1
         } else {
-            return trendData.count
+            return 10
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        guard let trendData = trendData else {
+            fatalError("trendData is nil")
+        }
+        
         if tableView == overViewTableView {
             let overCell = tableView.dequeueReusableCell(withIdentifier: OverViewTableViewCell.identifier, for: indexPath) as! OverViewTableViewCell
-            print("========")
-            overCell.configureCell(data: trendData[indexPath.row])
+            overCell.configureCell(data: trendData)
             return overCell
         } else {
             let caseCell = tableView.dequeueReusableCell(withIdentifier: CastTableViewCell.identifier, for: indexPath) as! CastTableViewCell
+            caseCell.configureCell(data: trendData)
             return caseCell
         }
     }

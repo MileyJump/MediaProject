@@ -115,7 +115,8 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         print(#function)
         
         let creditAPIVC = CreditAPIViewController()
-        creditAPIVC.trendData = trendData
+        creditAPIVC.trendData = trendData[indexPath.row]
+        creditAPIVC.movieID = trendData[indexPath.row].id
         navigationController?.pushViewController(creditAPIVC, animated: true)
     }
     

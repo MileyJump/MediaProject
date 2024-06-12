@@ -47,6 +47,8 @@ class TrendViewController: UIViewController {
         appearance.shadowColor = .lightGray
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
+        navigationItem.backButtonTitle = ""
+        
         let menu = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listButtonTapped))
         let search = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
         
@@ -86,25 +88,14 @@ class TrendViewController: UIViewController {
             .responseDecodable(of: Trend.self) { response in
             switch response.result{
             case .success(let value):
-                print(value)
+//                print(value)
                 self.trendData = value.results
+                print(value.results[0].id)
                 self.trendTableView.reloadData()
             case .failure(let error):
                 print(error)
             }
         }
-    
-        
-//        AF.request(APIURL.trendURL, method: .get, headers: headers).responseString { response in
-//            switch response.result {
-//            case .success(let value):
-//                print(value)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-        
     }
 }
 
@@ -118,6 +109,14 @@ extension TrendViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier, for: indexPath) as! TrendTableViewCell
         cell.configureCell(data: trendData[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
+        
+        let creditAPIVC = CreditAPIViewController()
+        creditAPIVC.trendData = trendData
+        navigationController?.pushViewController(creditAPIVC, animated: true)
     }
     
     

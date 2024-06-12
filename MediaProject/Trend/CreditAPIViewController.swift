@@ -14,6 +14,8 @@ class CreditAPIViewController: UIViewController {
     var movieID: Int?
     var creditData: [Cast] = []
     
+    var isExpanded = false
+    
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .orange
@@ -37,15 +39,31 @@ class CreditAPIViewController: UIViewController {
     let overViewLabel: UILabel = {
         let label = UILabel()
         label.text = "OverView"
+        label.font = .boldSystemFont(ofSize: 16)
+        label.textColor = .darkGray.withAlphaComponent(0.7)
         return label
+    }()
+    
+    let overViewLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray.withAlphaComponent(0.15)
+        return view
     }()
     
     let overViewTableView = UITableView()
     
     let castLabel: UILabel = {
         let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 16)
+        label.textColor = .darkGray.withAlphaComponent(0.7)
         label.text = "Cast"
         return label
+    }()
+    
+    let castLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .darkGray.withAlphaComponent(0.15)
+        return view
     }()
     
     let castTableView = UITableView()
@@ -57,9 +75,6 @@ class CreditAPIViewController: UIViewController {
         configureLayout()
         configureTableView()
         callRequest()
-        
-        overViewTableView.backgroundColor = .red
-        castTableView.backgroundColor = .brown
     }
     
 
@@ -84,6 +99,10 @@ class CreditAPIViewController: UIViewController {
     
     
     func configureTableView() {
+        overViewTableView.backgroundColor = .blue
+        overViewTableView.estimatedRowHeight = 100 // 추정 높이
+        overViewTableView.rowHeight = UITableView.automaticDimension // 자동 높이
+        
         overViewTableView.register(OverViewTableViewCell.self, forCellReuseIdentifier: OverViewTableViewCell.identifier)
         castTableView.register(CastTableViewCell.self, forCellReuseIdentifier: CastTableViewCell.identifier)
         
@@ -115,8 +134,10 @@ class CreditAPIViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(posterImageView)
         view.addSubview(overViewLabel)
+        view.addSubview(overViewLineView)
         view.addSubview(overViewTableView)
         view.addSubview(castLabel)
+        view.addSubview(castLineView)
         view.addSubview(castTableView)
     }
     
@@ -143,8 +164,15 @@ class CreditAPIViewController: UIViewController {
             make.leading.equalTo(titleLabel.snp.leading)
         }
         
+        overViewLineView.snp.makeConstraints { make in
+            make.top.equalTo(overViewLabel.snp.bottom).offset(4)
+            make.height.equalTo(1)
+            make.leading.equalTo(overViewLabel.snp.leading).inset(-5)
+            make.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+        
         overViewTableView.snp.makeConstraints { make in
-            make.top.equalTo(overViewLabel.snp.bottom)
+            make.top.equalTo(overViewLineView.snp.bottom)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(view.snp.height).multipliedBy(0.15)
         }
@@ -154,8 +182,16 @@ class CreditAPIViewController: UIViewController {
             make.leading.equalTo(titleLabel.snp.leading)
         }
         
-        castTableView.snp.makeConstraints { make in
+        castLineView.snp.makeConstraints { make in
             make.top.equalTo(castLabel.snp.bottom).offset(4)
+            make.height.equalTo(1)
+            make.leading.equalTo(overViewLabel.snp.leading).inset(-5)
+            make.trailing.equalTo(view.safeAreaLayoutGuide)
+            
+        }
+        
+        castTableView.snp.makeConstraints { make in
+            make.top.equalTo(castLineView.snp.bottom).offset(4)
             make.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -171,14 +207,15 @@ extension CreditAPIViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         guard let trendData = trendData else {
             fatalError("trendData is nil")
         }
         
         if tableView == overViewTableView {
             let overCell = tableView.dequeueReusableCell(withIdentifier: OverViewTableViewCell.identifier, for: indexPath) as! OverViewTableViewCell
-            overCell.configureCell(data: trendData)
+            
+            overCell.configureCell(data: trendData, isExpanded: isExpanded)
             return overCell
         } else {
             let caseCell = tableView.dequeueReusableCell(withIdentifier: CastTableViewCell.identifier, for: indexPath) as! CastTableViewCell
@@ -188,6 +225,25 @@ extension CreditAPIViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == overViewTableView {
+            print(#function)
+            if tableView == overViewTableView {
+                
+                isExpanded.toggle()
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+                
+            }
+            
+        }
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isExpanded {
+               return 200 // 확장될 높이
+           } else {
+               return 100 // 축소될 높이
+           }
+    }
 }
 

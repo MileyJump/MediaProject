@@ -11,22 +11,30 @@ class OverViewTableViewCell: UITableViewCell {
     
     
     
-    let overViewLabel: UILabel = {
+     let overViewLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.textAlignment = .left
+        label.font = .systemFont(ofSize: 14)
         return label
     }()
+    
+    var isExpanded: Bool = false {
+            didSet {
+                overViewLabel.numberOfLines = isExpanded ? 0 : 2
+                arrowIamgeView.image = UIImage(systemName: isExpanded ? "chevron.up" : "chevron.down")
+            }
+        }
     
     let arrowIamgeView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")
+        imageView.tintColor = UIColor.black
         return imageView
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .green
         
         configureHierarchy()
         configureLayout()
@@ -36,8 +44,9 @@ class OverViewTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(data: Results) {
+    func configureCell(data: Results, isExpanded: Bool) {
         overViewLabel.text = data.overview
+        self.isExpanded = isExpanded
     }
     
     func configureHierarchy() {
@@ -50,12 +59,15 @@ class OverViewTableViewCell: UITableViewCell {
             make.top.equalToSuperview().inset(18)
             make.horizontalEdges.equalToSuperview().inset(15)
             make.height.equalToSuperview().multipliedBy(0.4)
+//            make.height.equalTo(overViewLabel.font.lineHeight * 2)
         }
         arrowIamgeView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(8)
-            make.width.equalTo(arrowIamgeView.snp.height)
+//            make.bottom.equalToSuperview().inset(8)
             make.centerX.equalToSuperview()
-            make.height.equalTo(25)
+            make.size.equalTo(20)
+            
+            make.top.equalTo(overViewLabel.snp.bottom).offset(8)
+            make.bottom.lessThanOrEqualToSuperview().inset(8)
         }
     }
 }

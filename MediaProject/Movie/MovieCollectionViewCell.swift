@@ -10,7 +10,7 @@ import Kingfisher
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "MovieCollectionViewCell"
+    
     
     let movieImage: UIImageView = {
         let image = UIImageView()

@@ -137,6 +137,11 @@ extension MovieCollectionViewController: UICollectionViewDataSource, UICollectio
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        movieList[indexPath.row]
+        let vc = RecommendViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     
 }

@@ -30,6 +30,11 @@
 		B053C3C22C0F4A90009A98E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B053C3C12C0F4A90009A98E4 /* Assets.xcassets */; };
 		B053C3C52C0F4A90009A98E4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B053C3C42C0F4A90009A98E4 /* Base */; };
 		B053C3CD2C0F4B45009A98E4 /* JoinUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B053C3CC2C0F4B45009A98E4 /* JoinUpViewController.swift */; };
+		B0842AB82C29537800323C09 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842AB72C29537800323C09 /* TabBarController.swift */; };
+		B0842ABB2C29575800323C09 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842ABA2C29575800323C09 /* RecommendViewController.swift */; };
+		B0842ABD2C2959F400323C09 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842ABC2C2959F400323C09 /* UILabel+Extension.swift */; };
+		B0842ABF2C29620A00323C09 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842ABE2C29620A00323C09 /* RecommendCollectionViewCell.swift */; };
+		B0842AC12C29A3DF00323C09 /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842AC02C29A3DF00323C09 /* RecommendModel.swift */; };
 		B0F8A4632C0FD94B00639E84 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */; };
 		B0F8A4692C0FDAC600639E84 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0F8A4682C0FDAC600639E84 /* SnapKit */; };
 /* End PBXBuildFile section */
@@ -58,6 +63,11 @@
 		B053C3C42C0F4A90009A98E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B053C3C62C0F4A90009A98E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B053C3CC2C0F4B45009A98E4 /* JoinUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinUpViewController.swift; sourceTree = "<group>"; };
+		B0842AB72C29537800323C09 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B0842ABA2C29575800323C09 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		B0842ABC2C2959F400323C09 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		B0842ABE2C29620A00323C09 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		B0842AC02C29A3DF00323C09 /* RecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModel.swift; sourceTree = "<group>"; };
 		B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +101,8 @@
 				B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */,
 				B03A1A9D2C16E91D006CFB9C /* ReuseIdentifier.swift */,
 				B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */,
+				B0842ABC2C2959F400323C09 /* UILabel+Extension.swift */,
+				B0842AB72C29537800323C09 /* TabBarController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -143,14 +155,25 @@
 				B02B65E22C188C9B002C17B9 /* Movie */,
 				B03A1A982C16DD49006CFB9C /* Trend */,
 				B03A1A972C16DC56006CFB9C /* JACKFLIX */,
+				B0842AB92C29572300323C09 /* RecommendedMovie */,
 				B03A1A2D2C10421F006CFB9C /* Extension */,
-				B053C3BE2C0F4A8F009A98E4 /* Main.storyboard */,
 				B053C3C12C0F4A90009A98E4 /* Assets.xcassets */,
+				B053C3BE2C0F4A8F009A98E4 /* Main.storyboard */,
 				B053C3C32C0F4A90009A98E4 /* LaunchScreen.storyboard */,
 				B053C3C62C0F4A90009A98E4 /* Info.plist */,
 				B01BF8642C172FCE00CD30B9 /* APIURL.swift */,
 			);
 			path = MediaProject;
+			sourceTree = "<group>";
+		};
+		B0842AB92C29572300323C09 /* RecommendedMovie */ = {
+			isa = PBXGroup;
+			children = (
+				B0842ABA2C29575800323C09 /* RecommendViewController.swift */,
+				B0842AC02C29A3DF00323C09 /* RecommendModel.swift */,
+				B0842ABE2C29620A00323C09 /* RecommendCollectionViewCell.swift */,
+			);
+			path = RecommendedMovie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,16 +263,21 @@
 				B0F8A4632C0FD94B00639E84 /* UIImageView+Extension.swift in Sources */,
 				B053C3BD2C0F4A8F009A98E4 /* ViewController.swift in Sources */,
 				B011062C2C19D25900AD9705 /* CastTableViewCell.swift in Sources */,
+				B0842AC12C29A3DF00323C09 /* RecommendModel.swift in Sources */,
 				B01BF8672C17348500CD30B9 /* Trend.swift in Sources */,
 				B053C3B92C0F4A8F009A98E4 /* AppDelegate.swift in Sources */,
+				B0842ABF2C29620A00323C09 /* RecommendCollectionViewCell.swift in Sources */,
 				B03A1A9C2C16E8BB006CFB9C /* TrendTableViewCell.swift in Sources */,
 				B01106282C199FE500AD9705 /* CreditAPIViewController.swift in Sources */,
+				B0842ABB2C29575800323C09 /* RecommendViewController.swift in Sources */,
 				B02B65DD2C184C03002C17B9 /* MovieCollectionViewController.swift in Sources */,
+				B0842AB82C29537800323C09 /* TabBarController.swift in Sources */,
 				B02B65DF2C184F83002C17B9 /* MovieModel.swift in Sources */,
 				B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */,
 				B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */,
 				B053C3CD2C0F4B45009A98E4 /* JoinUpViewController.swift in Sources */,
 				B03A1A9E2C16E91D006CFB9C /* ReuseIdentifier.swift in Sources */,
+				B0842ABD2C2959F400323C09 /* UILabel+Extension.swift in Sources */,
 				B02B65E12C185775002C17B9 /* MovieCollectionViewCell.swift in Sources */,
 				B01BF8652C172FCE00CD30B9 /* APIURL.swift in Sources */,
 				B053C3BB2C0F4A8F009A98E4 /* SceneDelegate.swift in Sources */,

@@ -13,7 +13,7 @@ class RecommendTableViewCell: UITableViewCell {
     
     let titleLabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 20)
         label.text = "추천 영화"
         return label
@@ -35,14 +35,11 @@ class RecommendTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureHierarchy()
         configureLayout()
+        configureView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configureCell() {
-        
     }
 }
 
@@ -65,5 +62,10 @@ extension RecommendTableViewCell {
             make.horizontalEdges.bottom.equalTo(contentView)
             make.top.equalTo(titleLabel.snp.bottom)
         }
+    }
+    
+    func configureView() {
+        contentView.backgroundColor = .black
+        collectionView.backgroundColor = .black
     }
 }

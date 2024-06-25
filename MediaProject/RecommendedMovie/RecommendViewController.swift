@@ -34,6 +34,7 @@ class RecommendViewController: UIViewController {
     
     lazy var tableView = {
        let view = UITableView()
+        view.backgroundColor = .black
         view.delegate = self
         view.dataSource = self
         view.rowHeight = 200

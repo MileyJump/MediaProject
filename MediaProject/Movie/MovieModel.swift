@@ -31,7 +31,7 @@ struct Movie: Decodable {
 }
 
 
-struct RecommendModel {
+struct RecommendModel: Decodable {
     let page: Int
     let results: [Movie]
     let total_pages: Int

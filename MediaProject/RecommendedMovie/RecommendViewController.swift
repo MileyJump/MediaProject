@@ -11,7 +11,7 @@ import SnapKit
 
 class RecommendViewController: UIViewController {
     
-    let movie: [Movie] = []
+    var movie: [Movie] = []
     
     let titleTextField: UITextField = {
         let textField = UITextField()
@@ -56,7 +56,7 @@ class RecommendViewController: UIViewController {
     }()
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -72,14 +72,16 @@ class RecommendViewController: UIViewController {
             "Authorization" : APIKey.similarKey
         ]
         
-        AF.request(url, headers: header).responseString { response in
+        AF.request(url, headers: header).responseDecodable(of: MovieModel.self) { response in
             switch response.result {
             case .success(let value):
                 print(value)
+                self.movie = value.results
             case .failure(let error):
                 print(error)
             }
         }
+        
     }
     
     func configureView() {
@@ -97,7 +99,7 @@ class RecommendViewController: UIViewController {
     @objc func menuButtonClicked() {
         
     }
-
+    
 }
 
 extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -126,7 +128,7 @@ extension RecommendViewController {
     }
     
     func configureLayout() {
-    
+        
         titleTextField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalTo(view.safeAreaLayoutGuide).inset(10)

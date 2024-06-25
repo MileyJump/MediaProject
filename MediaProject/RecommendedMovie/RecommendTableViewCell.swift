@@ -14,7 +14,6 @@ class RecommendTableViewCell: UITableViewCell {
     let titleLabel = {
         let label = UILabel()
         label.textColor = .black
-        label.backgroundColor = .yellow
         label.font = .boldSystemFont(ofSize: 20)
         label.text = "추천 영화"
         return label
@@ -36,7 +35,6 @@ class RecommendTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureHierarchy()
         configureLayout()
-        collectionView.backgroundColor = .red
     }
     
     required init?(coder: NSCoder) {

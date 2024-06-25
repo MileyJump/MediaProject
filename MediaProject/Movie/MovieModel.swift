@@ -29,3 +29,17 @@ struct Movie: Decodable {
     //    let vote_average: Bool
     let vote_count: Int
 }
+
+struct Poster: Decodable {
+    let backdrops: [Backdrops]
+}
+
+struct Backdrops: Decodable {
+    let aspect_ratio: Double
+    let height: Int
+    //            "iso_639_1": null,
+    let file_path: String
+    let vote_average: Double
+    let vote_count: Int
+    let width: Int
+}

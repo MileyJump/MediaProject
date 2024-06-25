@@ -30,11 +30,8 @@ class CreditAPIViewController: UIViewController {
         return label
     }()
     
-    let posterImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .blue
-        return imageView
-    }()
+    let posterImageView = UIImageView()
+        
     
     let overViewLabel: UILabel = {
         let label = UILabel()

@@ -15,7 +15,6 @@ class TrendViewController: UIViewController {
     
     let trendTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .blue
         return tableView
     }()
     

@@ -51,17 +51,17 @@ struct RecommendManager {
         
     }
     
-    func posterMovies(id: Int, completionHandler: @escaping ([Movie]) -> Void ) {
-        let url = "\(APIURL.recommendURL)\(id)/recommendations?language=ko-KR"
+    func posterMovies(id: Int, completionHandler: @escaping ([Backdrops]) -> Void ) {
+        let url = "\(APIURL.posterUIL)\(id)/images"
         let header:HTTPHeaders = [
             "Authorization" : APIKey.similarKey
         ]
         
-        AF.request(url, headers: header).responseDecodable(of: MovieModel.self) { response in
+        AF.request(url, headers: header).responseDecodable(of: Poster.self) { response in
             switch response.result {
             case .success(let value):
 //                print(value)
-                completionHandler(value.results)
+                completionHandler(value.backdrops)
             case .failure(let error):
                 print(error)
             }

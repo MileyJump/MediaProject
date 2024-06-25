@@ -37,7 +37,6 @@ class RecommendViewController: UIViewController {
         view.delegate = self
         view.dataSource = self
         view.rowHeight = 200
-        view.backgroundColor = .blue
         view.register(RecommendTableViewCell.self, forCellReuseIdentifier: RecommendTableViewCell.identifier)
         return view
     }()
@@ -50,15 +49,31 @@ class RecommendViewController: UIViewController {
         configureHierachy()
         configureLayout()
         
-        RecommendManager.shared.similarMovies(id: movieID) { data in
-            self.movie[0] = data
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            RecommendManager.shared.similarMovies(id: self.movieID) { data in
+                self.movie[0] = data
+                group.leave()
+            }
+        }
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            RecommendManager.shared.recommendedMovies(id: self.movieID) { data in
+                self.movie[1] = data
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
             self.tableView.reloadData()
         }
         
-        RecommendManager.shared.recommendedMovies(id: movieID) { data in
-            self.movie[1] = data
-            self.tableView.reloadData()
-        }
+//        RecommendManager.shared.posterMovies(id: movieID) { data in
+//            self.movie[2] = data
+//            self.tableView.reloadData()
+//        }
         
     }
     

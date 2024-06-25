@@ -77,6 +77,7 @@ class RecommendViewController: UIViewController {
             case .success(let value):
                 print(value)
                 self.movie = value.results
+                self.similarCollectionView.reloadData()
             case .failure(let error):
                 print(error)
             }

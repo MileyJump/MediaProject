@@ -8,94 +8,70 @@
 import UIKit
 import Alamofire
 import SnapKit
+import Kingfisher
+
+enum MovieOptions : String, CaseIterable {
+    case Similar = "비슷한 영화"
+    case recommend = "추천 영화"
+    case poster = "포스터"
+}
 
 class RecommendViewController: UIViewController {
     
-    var movie: [Movie] = []
+    var movie: [[Movie]] = [[],[],[]]
     
-    let titleTextField: UITextField = {
-        let textField = UITextField()
-        textField.text = "극한직업"
-        textField.textColor = .white
-        textField.backgroundColor = .white
-        return textField
-    }()
+    var movieID: Int = 64
+    var movieTitle: String = "" 
     
-    let similarLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
-        label.configureLabel(text: "비슷한 영화", font: 16, color: .white)
+        label.text = "극한직업"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 30)
+//        label.backgroundColor = .white
         return label
     }()
     
-    let similarCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout() )
-    let recommendedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout() )
-    let posterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout() )
-    
-    static func collectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        let itemSpacing:CGFloat = 5
-        let width = UIScreen.main.bounds.width
-        let itemWidt = (width) - (itemSpacing * 4)
-        layout.itemSize = CGSize(width: itemWidt/3, height: itemWidt/2.5)
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = itemSpacing
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-        return layout
-    }
-    
-    let recommendedLabel: UILabel = {
-        let label = UILabel()
-        label.configureLabel(text: "비슷한 영화", font: 16, color: .white)
-        return label
+    lazy var tableView = {
+       let view = UITableView()
+        view.delegate = self
+        view.dataSource = self
+        view.rowHeight = 200
+        view.backgroundColor = .blue
+        view.register(RecommendTableViewCell.self, forCellReuseIdentifier: RecommendTableViewCell.identifier)
+        return view
     }()
     
-    let posterLabel: UILabel = {
-        let label = UILabel()
-        label.configureLabel(text: "비슷한 영화", font: 16, color: .white)
-        return label
-    }()
-    
-    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         configureHierachy()
         configureLayout()
-        callRequest()
-    }
-    
-    func callRequest() {
-        let url = "\(APIURL.similarURL)64/similar?language=ko-kr"
-        let header:HTTPHeaders = [
-            "accept" : "application/json",
-            "Authorization" : APIKey.similarKey
-        ]
         
-        AF.request(url, headers: header).responseDecodable(of: MovieModel.self) { response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-                self.movie = value.results
-                self.similarCollectionView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
+        RecommendManager.shared.similarMovies(id: movieID) { data in
+            self.movie[0] = data
+            self.tableView.reloadData()
+        }
+        
+        RecommendManager.shared.recommendedMovies(id: movieID) { data in
+            self.movie[1] = data
+            self.tableView.reloadData()
         }
         
     }
+    
+    
     
     func configureView() {
         view.backgroundColor = .black
         
         let menu = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: #selector(menuButtonClicked))
         navigationItem.rightBarButtonItem = menu
-        
-        similarCollectionView.backgroundColor = .white
-        similarCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.identifier)
-        similarCollectionView.dataSource = self
-        similarCollectionView.delegate = self
+        titleLabel.text = movieTitle
     }
+    
     
     @objc func menuButtonClicked() {
         
@@ -103,73 +79,60 @@ class RecommendViewController: UIViewController {
     
 }
 
-extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movie.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
-        // 셀 구성
-        return cell
-    }
-}
-
 
 extension RecommendViewController {
     
     func configureHierachy() {
-        view.addSubview(titleTextField)
-        view.addSubview(similarLabel)
-        view.addSubview(similarCollectionView)
-        view.addSubview(recommendedLabel)
-        view.addSubview(recommendedCollectionView)
-        view.addSubview(posterLabel)
-        view.addSubview(posterCollectionView)
+        view.addSubview(titleLabel)
+        view.addSubview(tableView)
     }
     
     func configureLayout() {
         
-        titleTextField.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
-            make.size.equalTo(40)
         }
         
-        similarLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleTextField.snp.bottom).offset(10)
-            make.leading.equalTo(titleTextField)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        
-        similarCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(similarLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(150)
-        }
-        
-        recommendedLabel.snp.makeConstraints { make in
-            make.top.equalTo(similarCollectionView.snp.bottom).offset(10)
-            make.leading.equalTo(titleTextField)
-        }
-        
-        recommendedCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(recommendedLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(150)
-        }
-        
-        posterLabel.snp.makeConstraints { make in
-            make.top.equalTo(recommendedCollectionView.snp.bottom).offset(10)
-            make.leading.equalTo(titleTextField)
-        }
-        
-        posterCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(posterLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(150)
-        }
-        
-        
-        
     }
+}
+
+extension RecommendViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movie.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCell.identifier, for: indexPath) as! RecommendTableViewCell
+        let movieOptions = MovieOptions.allCases[indexPath.row]
+        
+        cell.titleLabel.text = movieOptions.rawValue
+        cell.collectionView.dataSource = self
+        cell.collectionView.delegate = self
+        cell.collectionView.tag = indexPath.row
+        cell.collectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.identifier)
+        cell.collectionView.reloadData()
+        return cell
+    }
+}
+
+extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movie[collectionView.tag].count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
+        let data = movie[collectionView.tag][indexPath.item]
+        let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.poster_path)")
+        print(url)
+        cell.posterImageView.kf.setImage(with: url)
+        return cell
+    }
+    
+    
 }

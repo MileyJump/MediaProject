@@ -13,7 +13,7 @@ import Alamofire
 class MovieCollectionViewController: UIViewController {
     
     var movieList: [Movie] = []
-    
+    var movieID:Int = 0
     var page = 1
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout() )
@@ -67,7 +67,7 @@ class MovieCollectionViewController: UIViewController {
     
     func callRequest(query: String) {
         
-        let url =  "\(APIURL.movieURL)\(APIKey.movieKey)&query=\(query)&page=\(page)"
+        let url =  "\(APIURL.movieURL)\(APIKey.movieKey)&query=\(query)&page=\(page)&language=ko-KR"
         
         let headers: HTTPHeaders = [
             "accept" : "application/json"
@@ -140,6 +140,9 @@ extension MovieCollectionViewController: UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        movieList[indexPath.row]
         let vc = RecommendViewController()
+        vc.movieID = movieList[indexPath.row].id
+        vc.movieTitle = movieList[indexPath.row].title
+//        vc.movieID
         navigationController?.pushViewController(vc, animated: true)
     }
     

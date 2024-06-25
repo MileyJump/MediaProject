@@ -33,7 +33,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(data: Movie) {
-        guard let poster = data.poster_path else { return }
+//        guard let poster = data.poster_path else { return }
+         let poster = data.poster_path 
         
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(poster)")
         movieImage.kf.setImage(with: url)

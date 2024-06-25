@@ -34,7 +34,8 @@
 		B0842ABB2C29575800323C09 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842ABA2C29575800323C09 /* RecommendViewController.swift */; };
 		B0842ABD2C2959F400323C09 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842ABC2C2959F400323C09 /* UILabel+Extension.swift */; };
 		B0842ABF2C29620A00323C09 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842ABE2C29620A00323C09 /* RecommendCollectionViewCell.swift */; };
-		B0842AC12C29A3DF00323C09 /* RecommendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842AC02C29A3DF00323C09 /* RecommendModel.swift */; };
+		B0842AE22C2AAF4B00323C09 /* RecommendManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842AE12C2AAF4B00323C09 /* RecommendManager.swift */; };
+		B0842AE42C2AB2CB00323C09 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842AE32C2AB2CB00323C09 /* RecommendTableViewCell.swift */; };
 		B0F8A4632C0FD94B00639E84 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */; };
 		B0F8A4692C0FDAC600639E84 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0F8A4682C0FDAC600639E84 /* SnapKit */; };
 /* End PBXBuildFile section */
@@ -67,7 +68,8 @@
 		B0842ABA2C29575800323C09 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		B0842ABC2C2959F400323C09 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		B0842ABE2C29620A00323C09 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
-		B0842AC02C29A3DF00323C09 /* RecommendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendModel.swift; sourceTree = "<group>"; };
+		B0842AE12C2AAF4B00323C09 /* RecommendManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendManager.swift; sourceTree = "<group>"; };
+		B0842AE32C2AB2CB00323C09 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,7 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				B0842ABA2C29575800323C09 /* RecommendViewController.swift */,
-				B0842AC02C29A3DF00323C09 /* RecommendModel.swift */,
+				B0842AE32C2AB2CB00323C09 /* RecommendTableViewCell.swift */,
+				B0842AE12C2AAF4B00323C09 /* RecommendManager.swift */,
 				B0842ABE2C29620A00323C09 /* RecommendCollectionViewCell.swift */,
 			);
 			path = RecommendedMovie;
@@ -263,7 +266,6 @@
 				B0F8A4632C0FD94B00639E84 /* UIImageView+Extension.swift in Sources */,
 				B053C3BD2C0F4A8F009A98E4 /* ViewController.swift in Sources */,
 				B011062C2C19D25900AD9705 /* CastTableViewCell.swift in Sources */,
-				B0842AC12C29A3DF00323C09 /* RecommendModel.swift in Sources */,
 				B01BF8672C17348500CD30B9 /* Trend.swift in Sources */,
 				B053C3B92C0F4A8F009A98E4 /* AppDelegate.swift in Sources */,
 				B0842ABF2C29620A00323C09 /* RecommendCollectionViewCell.swift in Sources */,
@@ -275,9 +277,11 @@
 				B02B65DF2C184F83002C17B9 /* MovieModel.swift in Sources */,
 				B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */,
 				B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */,
+				B0842AE22C2AAF4B00323C09 /* RecommendManager.swift in Sources */,
 				B053C3CD2C0F4B45009A98E4 /* JoinUpViewController.swift in Sources */,
 				B03A1A9E2C16E91D006CFB9C /* ReuseIdentifier.swift in Sources */,
 				B0842ABD2C2959F400323C09 /* UILabel+Extension.swift in Sources */,
+				B0842AE42C2AB2CB00323C09 /* RecommendTableViewCell.swift in Sources */,
 				B02B65E12C185775002C17B9 /* MovieCollectionViewCell.swift in Sources */,
 				B01BF8652C172FCE00CD30B9 /* APIURL.swift in Sources */,
 				B053C3BB2C0F4A8F009A98E4 /* SceneDelegate.swift in Sources */,

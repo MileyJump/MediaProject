@@ -18,7 +18,8 @@ enum MovieOptions : String, CaseIterable {
 
 class RecommendViewController: UIViewController {
     
-    var movie: [[Movie]] = [[],[],[]]
+    var movie: [[Movie]] = [[],[]]
+    var poster: [Backdrops] = []
     
     var movieID: Int = 64
     var movieTitle: String = "" 
@@ -71,10 +72,10 @@ class RecommendViewController: UIViewController {
             self.tableView.reloadData()
         }
         
-//        RecommendManager.shared.posterMovies(id: movieID) { data in
-//            self.movie[2] = data
-//            self.tableView.reloadData()
-//        }
+        RecommendManager.shared.posterMovies(id: movieID) { data in
+            self.poster = data
+            self.tableView.reloadData()
+        }
         
     }
     
@@ -145,7 +146,6 @@ extension RecommendViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
         let data = movie[collectionView.tag][indexPath.item]
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(data.poster_path)")
-        print(url)
         cell.posterImageView.kf.setImage(with: url)
         return cell
     }

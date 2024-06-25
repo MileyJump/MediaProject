@@ -23,8 +23,6 @@ struct RecommendManager {
         AF.request(url, headers: header).responseDecodable(of: MovieModel.self) { response in
             switch response.result {
             case .success(let value):
-//                dump(value)
-                print("================================")
                 completionHandler(value.results)
             case .failure(let error):
                 print(error)
@@ -42,7 +40,7 @@ struct RecommendManager {
         AF.request(url, headers: header).responseDecodable(of: MovieModel.self) { response in
             switch response.result {
             case .success(let value):
-//                print(value)
+                //                print(value)
                 completionHandler(value.results)
             case .failure(let error):
                 print(error)
@@ -60,7 +58,7 @@ struct RecommendManager {
         AF.request(url, headers: header).responseDecodable(of: Poster.self) { response in
             switch response.result {
             case .success(let value):
-//                print(value)
+                //                print(value)
                 completionHandler(value.backdrops)
             case .failure(let error):
                 print(error)

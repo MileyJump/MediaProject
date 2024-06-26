@@ -47,7 +47,7 @@ class MovieCollectionViewController: UIViewController {
         view.addSubview(searchBar)
          
         searchBar.delegate = self
-        collectionView.prefetchDataSource = self
+//        collectionView.prefetchDataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
@@ -65,62 +65,92 @@ class MovieCollectionViewController: UIViewController {
     }
     
     
-    func callRequest(query: String) {
-        
-        let url =  "\(APIURL.movieURL)\(APIKey.movieKey)&query=\(query)&page=\(page)&language=ko-KR"
-        
-        let headers: HTTPHeaders = [
-            "accept" : "application/json"
-        ]
-        
-        AF.request(url, headers: headers).responseDecodable(of: MovieModel.self) { response in
-            switch response.result {
-            case .success(let value):
-//                print(value)
-                if self.page == 1 {
-                    self.movieList = value.results
-                    print("dddddd")
-                } else {
-                    self.movieList.append(contentsOf: value.results)
-                    print("adfasdfasdfasdfdad")
-                }
-                self.collectionView.reloadData()
-                
-                if self.page == 1 {
-                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-                        
-                }
-
-            case .failure(let error):
-                print(error)
-            }
-        
-            
-            
-        }
-        
-    }
-    
+//    func callRequest(query: String) {
+//        
+//        let url =  "\(APIURL.movieURL)\(APIKey.movieKey)&query=\(query)&page=\(page)&language=ko-KR"
+//        
+//        let headers: HTTPHeaders = [
+//            "accept" : "application/json"
+//        ]
+//        
+//        AF.request(url, headers: headers).responseDecodable(of: MovieModel.self) { response in
+//            switch response.result {
+//            case .success(let value):
+////                print(value)
+//                if self.page == 1 {
+//                    self.movieList = value.results
+//                    print("dddddd")
+//                } else {
+//                    self.movieList.append(contentsOf: value.results)
+//                    print("adfasdfasdfasdfdad")
+//                }
+//                self.collectionView.reloadData()
+//                
+//                if self.page == 1 {
+//                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+//                        
+//                }
+//
+//            case .failure(let error):
+//                print(error)
+//            }
+//        
+//            
+//            
+//        }
+//        
+//    }
+//    
 }
 
-extension MovieCollectionViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print(#function)
-        for item in indexPaths {
-            if movieList.count - 2 == item.row {
-                page += 1
-                callRequest(query: searchBar.text!)
-            }
-        }
-    }
+//extension MovieCollectionViewController: UICollectionViewDataSourcePrefetching {
+//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+//        print("여긴가?")
+//        for item in indexPaths {
+//            if movieList.count - 2 == item.row {
+//                page += 1
+//                //                callRequest(query: searchBar.text!)
+//                MovieManager.shared.moviesService(api: .searchMovies(query: searchBar.text!)) { movie, error in
+//                    if let error = error {
+//                        print("뭐야")
+//                        print(error)
+//                    } else {
+//                        guard let movie = movie else { return }
+//                        if self.page == 1 {
+//                            self.movieList = movie
+//                        } else {
+//                            self.movieList.append(contentsOf: movie)
+//                        }
+//                        self.collectionView.reloadData()
+//                        
+//                        if self.page == 1 {
+//                            self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+//                            
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
     
     
-}
+
 
 extension MovieCollectionViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         page = 1
-        callRequest(query: searchBar.text!)
+        MovieManager.shared.moviesService(api: .searchMovies(query: searchBar.text!)) { movie, error in
+            print("뭐야?")
+            if let error = error {
+                print(error)
+            } else {
+                guard let movie = movie else { return }
+                self.movieList = movie
+                print("성공")
+                self.collectionView.reloadData()
+            }
+        }
     }
 }
 

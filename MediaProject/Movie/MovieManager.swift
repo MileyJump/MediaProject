@@ -8,9 +8,9 @@
 import UIKit
 import Alamofire
 
-struct RecommendManager {
+struct MovieManager {
     
-    static let shared = RecommendManager()
+    static let shared = MovieManager()
     
     private init() { }
     
@@ -20,7 +20,7 @@ struct RecommendManager {
         AF.request(api.endPoint, method: api.method, parameters: api.parameter, encoding: URLEncoding(destination: .queryString), headers: api.header).validate(statusCode: 200..<500).responseDecodable(of: MovieModel.self) { response in
             switch response.result {
             case .success(let value):
-//                print("SUCCESS")
+                print("SUCCESS")
 //                dump(value)
                 completionHandler(value.results, nil)
             case .failure(let error):
@@ -31,6 +31,8 @@ struct RecommendManager {
         }
         
     }
+    
+    
 }
 
 

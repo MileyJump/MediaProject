@@ -54,7 +54,7 @@ class RecommendViewController: UIViewController {
         let group = DispatchGroup()
         group.enter()
         DispatchQueue.global().async {
-            RecommendManager.shared.moviesService(api: .similarMovies(id: self.movieID)) { movie, error in
+            MovieManager.shared.moviesService(api: .similarMovies(id: self.movieID)) { movie, error in
                 print("되고 있나요")
                 if let error = error {
                     print(error)
@@ -68,7 +68,7 @@ class RecommendViewController: UIViewController {
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            RecommendManager.shared.moviesService(api: .recommendeMovies(id: self.movieID)) { movie, error in
+            MovieManager.shared.moviesService(api: .recommendeMovies(id: self.movieID)) { movie, error in
                 if let error = error {
                     print(error)
                 } else {

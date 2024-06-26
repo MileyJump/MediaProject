@@ -22,19 +22,19 @@ class RecommendViewController: UIViewController {
     var poster: [Backdrops] = []
     
     var movieID: Int = 64
-    var movieTitle: String = "" 
+    var movieTitle: String = ""
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "극한직업"
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 30)
-//        label.backgroundColor = .white
+        //        label.backgroundColor = .white
         return label
     }()
     
     lazy var tableView = {
-       let view = UITableView()
+        let view = UITableView()
         view.backgroundColor = .black
         view.delegate = self
         view.dataSource = self
@@ -43,7 +43,7 @@ class RecommendViewController: UIViewController {
         return view
     }()
     
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,30 +53,35 @@ class RecommendViewController: UIViewController {
         
         let group = DispatchGroup()
         group.enter()
-        DispatchQueue.global().async(group: group) {
-            RecommendManager.shared.similarMovies(id: self.movieID) { data in
-                self.movie[0] = data
+        DispatchQueue.global().async {
+            RecommendManager.shared.moviesService(api: .similarMovies(id: self.movieID)) { movie, error in
+                print("되고 있나요")
+                if let error = error {
+                    print(error)
+                } else {
+                    guard let movie = movie else { return }
+                    self.movie[0] = movie
+                }
                 group.leave()
             }
         }
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            RecommendManager.shared.recommendedMovies(id: self.movieID) { data in
-                self.movie[1] = data
+            RecommendManager.shared.moviesService(api: .recommendeMovies(id: self.movieID)) { movie, error in
+                if let error = error {
+                    print(error)
+                } else {
+                    guard let movie = movie else { return }
+                    self.movie[1] = movie
+                }
                 group.leave()
             }
         }
         
         group.notify(queue: .main) {
             self.tableView.reloadData()
-        }
-        
-        RecommendManager.shared.posterMovies(id: movieID) { data in
-            self.poster = data
-            self.tableView.reloadData()
-        }
-        
+        }   
     }
     
     
@@ -91,7 +96,7 @@ class RecommendViewController: UIViewController {
     
     
     @objc func menuButtonClicked() {
-        
+        print(#function)
     }
     
 }

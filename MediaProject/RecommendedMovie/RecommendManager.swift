@@ -14,59 +14,23 @@ struct RecommendManager {
     
     private init() { }
     
-    func similarMovies(id: Int, completionHandler: @escaping ([Movie]) -> Void ) {
-        let url = "\(APIURL.similarURL)\(id)/similar?language=ko-kr"
-        let header:HTTPHeaders = [
-            "Authorization" : APIKey.similarKey
-        ]
-        
-        AF.request(url, headers: header).responseDecodable(of: MovieModel.self) { response in
+    typealias CompletionHandler = ([Movie]?, String?) -> Void
+    
+    func moviesService(api: MovieRequest, completionHandler: @escaping CompletionHandler) {
+        AF.request(api.endPoint, method: api.method, parameters: api.parameter, encoding: URLEncoding(destination: .queryString), headers: api.header).validate(statusCode: 200..<500).responseDecodable(of: MovieModel.self) { response in
             switch response.result {
             case .success(let value):
-                completionHandler(value.results)
+//                print("SUCCESS")
+//                dump(value)
+                completionHandler(value.results, nil)
             case .failure(let error):
+//                print("FAILED")
+                completionHandler(nil, "잠시 후 다시 시도해주세요")
                 print(error)
             }
         }
         
     }
-    
-    func recommendedMovies(id: Int, completionHandler: @escaping ([Movie]) -> Void ) {
-        let url = "\(APIURL.recommendURL)\(id)/recommendations?language=ko-KR"
-        let header:HTTPHeaders = [
-            "Authorization" : APIKey.similarKey
-        ]
-        
-        AF.request(url, headers: header).responseDecodable(of: MovieModel.self) { response in
-            switch response.result {
-            case .success(let value):
-                //                print(value)
-                completionHandler(value.results)
-            case .failure(let error):
-                print(error)
-            }
-        }
-        
-    }
-    
-    func posterMovies(id: Int, completionHandler: @escaping ([Backdrops]) -> Void ) {
-        let url = "\(APIURL.posterUIL)\(id)/images"
-        let header:HTTPHeaders = [
-            "Authorization" : APIKey.similarKey
-        ]
-        
-        AF.request(url, headers: header).responseDecodable(of: Poster.self) { response in
-            switch response.result {
-            case .success(let value):
-                //                print(value)
-                completionHandler(value.backdrops)
-            case .failure(let error):
-                print(error)
-            }
-        }
-        
-    }
-    
 }
 
 

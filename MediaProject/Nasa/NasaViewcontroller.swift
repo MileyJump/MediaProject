@@ -1,6 +1,6 @@
 //
 //  NasaViewController.swift
-//  NetworkURLSessionGCD
+//  MediaProject
 //
 //  Created by 최민경 on 7/1/24.
 //
@@ -72,7 +72,11 @@ class NasaViewController: BaseViewController {
     }
     
     @objc func requestButtonClicked() {
-        print(#function)
+        print(#function, "=================================")
+        
+        if requestButton.isEnabled == false {
+            return
+        }
         
         buffer = Data() // nil이 아닌 상태로 만들어야 됨 0바이트라도 만들어야지 append 가능
         callRequest()
@@ -136,7 +140,7 @@ extension NasaViewController: URLSessionDataDelegate {
     // 서버에서 데이터를 받아올 때마다 반복적으로 호출됨
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
         print(#function, data)
-        
+        requestButton.isEnabled = false
         buffer?.append(data) // 데이터가 계속 추가 되고 있는거 아닌가...? 제거 안 해줘도 됨??.. => vc가 메모리에서 해제 되면 변수 buffer도 해제 됨 ㅇㅇ
     }
     
@@ -146,9 +150,10 @@ extension NasaViewController: URLSessionDataDelegate {
         
         if let error = error {
             progressLabel.text = "문제가 발생했습니다."
+            nasaImageView.image = UIImage(systemName: "slowmo")
         } else {
             print("성공") // completionHandler 시점과 동일
-            
+            requestButton.isEnabled = true
             guard let buffer = buffer else {
                 print("Buffer nil")
                 return

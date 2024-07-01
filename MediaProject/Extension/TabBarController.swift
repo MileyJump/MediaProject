@@ -19,6 +19,7 @@ class TabBarController: UITabBarController {
         let firstVC = ViewController()
         let trendVC = TrendViewController()
         let movie = MovieCollectionViewController()
+        let nasa = NasaViewController()
 //        let recommend = RecommendViewController()
 
 
@@ -26,6 +27,7 @@ class TabBarController: UITabBarController {
         let firstvc = UINavigationController(rootViewController: firstVC)
         let trendvc = UINavigationController(rootViewController: trendVC)
         let movievc = UINavigationController(rootViewController: movie)
+        let nasaVC = UINavigationController(rootViewController: nasa)
 //        let recommendVC = UINavigationController(rootViewController: recommend)
         
         
@@ -39,10 +41,12 @@ class TabBarController: UITabBarController {
         movie.tabBarItem = UITabBarItem(title: "영화 검색", image: UIImage(systemName: "magnifyingglass.circle"), tag: 2)
         movie.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
         
+        nasaVC.tabBarItem = UITabBarItem(title: "나사", image: UIImage(systemName: "magnifyingglass.circle"), tag: 2)
+        
 //        recommendVC.tabBarItem = UITabBarItem(title: "추천 영화", image: UIImage(systemName: "movieclapper"), tag: 3)
 //        recommendVC.tabBarItem.selectedImage = UIImage(systemName: "movieclapper.fill")
         
-        setViewControllers([firstvc,trendvc,movievc], animated: true)
+        setViewControllers([firstvc,trendvc,movievc, nasaVC], animated: true)
          
     }
 }

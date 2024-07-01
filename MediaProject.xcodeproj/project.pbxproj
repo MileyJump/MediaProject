@@ -37,6 +37,8 @@
 		B0842AE22C2AAF4B00323C09 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842AE12C2AAF4B00323C09 /* MovieManager.swift */; };
 		B0842AE42C2AB2CB00323C09 /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842AE32C2AB2CB00323C09 /* RecommendTableViewCell.swift */; };
 		B0842AEA2C2C095A00323C09 /* MovieRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0842AE92C2C095A00323C09 /* MovieRequest.swift */; };
+		B08F10A52C32B2CE003B4009 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F10A42C32B2CE003B4009 /* BaseViewController.swift */; };
+		B08F10A82C32B353003B4009 /* NasaViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F10A72C32B353003B4009 /* NasaViewcontroller.swift */; };
 		B0F8A4632C0FD94B00639E84 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */; };
 		B0F8A4692C0FDAC600639E84 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0F8A4682C0FDAC600639E84 /* SnapKit */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,8 @@
 		B0842AE12C2AAF4B00323C09 /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		B0842AE32C2AB2CB00323C09 /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		B0842AE92C2C095A00323C09 /* MovieRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequest.swift; sourceTree = "<group>"; };
+		B08F10A42C32B2CE003B4009 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B08F10A72C32B353003B4009 /* NasaViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewcontroller.swift; sourceTree = "<group>"; };
 		B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +108,6 @@
 		B03A1A2D2C10421F006CFB9C /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */,
 				B03A1A9D2C16E91D006CFB9C /* ReuseIdentifier.swift */,
 				B0F8A4622C0FD94B00639E84 /* UIImageView+Extension.swift */,
 				B0842ABC2C2959F400323C09 /* UILabel+Extension.swift */,
@@ -158,12 +161,15 @@
 			children = (
 				B053C3B82C0F4A8F009A98E4 /* AppDelegate.swift */,
 				B053C3BA2C0F4A8F009A98E4 /* SceneDelegate.swift */,
+				B03A1A2B2C103D5B006CFB9C /* UITextField+Extension.swift */,
+				B08F10A62C32B33B003B4009 /* Nasa */,
 				B02B65E22C188C9B002C17B9 /* Movie */,
 				B03A1A982C16DD49006CFB9C /* Trend */,
 				B03A1A972C16DC56006CFB9C /* JACKFLIX */,
 				B0842AB92C29572300323C09 /* RecommendedMovie */,
 				B03A1A2D2C10421F006CFB9C /* Extension */,
 				B053C3C12C0F4A90009A98E4 /* Assets.xcassets */,
+				B08F10A32C32B2B9003B4009 /* Base */,
 				B053C3BE2C0F4A8F009A98E4 /* Main.storyboard */,
 				B053C3C32C0F4A90009A98E4 /* LaunchScreen.storyboard */,
 				B053C3C62C0F4A90009A98E4 /* Info.plist */,
@@ -180,6 +186,22 @@
 				B0842ABE2C29620A00323C09 /* RecommendCollectionViewCell.swift */,
 			);
 			path = RecommendedMovie;
+			sourceTree = "<group>";
+		};
+		B08F10A32C32B2B9003B4009 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B08F10A42C32B2CE003B4009 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B08F10A62C32B33B003B4009 /* Nasa */ = {
+			isa = PBXGroup;
+			children = (
+				B08F10A72C32B353003B4009 /* NasaViewcontroller.swift */,
+			);
+			path = Nasa;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,8 +297,10 @@
 				B03A1A9C2C16E8BB006CFB9C /* TrendTableViewCell.swift in Sources */,
 				B01106282C199FE500AD9705 /* CreditAPIViewController.swift in Sources */,
 				B0842ABB2C29575800323C09 /* RecommendViewController.swift in Sources */,
+				B08F10A82C32B353003B4009 /* NasaViewcontroller.swift in Sources */,
 				B02B65DD2C184C03002C17B9 /* MovieCollectionViewController.swift in Sources */,
 				B0842AB82C29537800323C09 /* TabBarController.swift in Sources */,
+				B08F10A52C32B2CE003B4009 /* BaseViewController.swift in Sources */,
 				B02B65DF2C184F83002C17B9 /* MovieModel.swift in Sources */,
 				B03A1A2C2C103D5B006CFB9C /* UITextField+Extension.swift in Sources */,
 				B03A1A9A2C16E119006CFB9C /* TrendViewController.swift in Sources */,
